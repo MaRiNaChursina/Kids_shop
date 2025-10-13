@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "Игрушка****",
+    "price": 10,
+    "image": "https://avatars.mds.yandex.net/get-mpic/11450294/2a00000192ca183c1999427b76ff5e14fb2f/orig"
+  },
+  {
+    "id": 2,
+    "name": "Книга",
+    "price": 15,
+    "image": "https://avatars.mds.yandex.net/get-mpic/11450294/2a00000192ca183c1999427b76ff5e14fb2f/orig"
+  },
+  {
+    "id": 1759435756565,
+    "name": "Поездка в москву*",
+    "price": 300,
+    "image": "/images/photo_2025-10-06_18-07-21.jpg"
+  }
+]

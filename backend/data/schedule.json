@@ -1,0 +1,16 @@
+﻿[
+  {
+    "groupId": 1,
+    "day": "Понедельник",
+    "time": "10:00",
+    "subject": "Математика",
+    "link": "https://example.com/lesson1"
+  },
+  {
+    "groupId": 2,
+    "day": "Понедельник",
+    "time": "11:00",
+    "subject": "Русский язык",
+    "link": "https://example.com/lesson2"
+  }
+]
