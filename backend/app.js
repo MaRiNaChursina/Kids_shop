@@ -13,7 +13,7 @@ app.use('/images', express.static('public/images'));
 
 // Настройка CORS с поддержкой cookies
 app.use(cors({
-  origin: server, // фронтенд
+  origin: "http://91.229.9.244", // публичный фронтенд через Nginx
   credentials: true
 }));
 
