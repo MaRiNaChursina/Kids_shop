@@ -13,31 +13,31 @@ const app = express();
 app.use('/images', express.static('public/images'));
 
 // Настройка CORS с поддержкой cookies
-app.use(cors({
-  origin: "http://91.229.9.244", // публичный фронтенд через Nginx
-  credentials: true
-}));
+// app.use(cors({
+//   origin: "http://91.229.9.244", // публичный фронтенд через Nginx
+//   credentials: true
+// }));
 
-app.use(express.json());
+// app.use(express.json());
 
 // Настройка сессий
-app.use(session({
-  secret: "astracoins_secret_key",
-  resave: false,
-  saveUninitialized: false,
-  cookie: {
-    maxAge: 5 * 60 * 1000, // 5 минут
-  },
-}));
+// app.use(session({
+//   secret: "astracoins_secret_key",
+//   resave: false,
+//   saveUninitialized: false,
+//   cookie: {
+//     maxAge: 5 * 60 * 1000, // 5 минут
+//   },
+// }));
 
 // Промежуточный обработчик для обновления сессии при активности
-app.use((req, res, next) => {
-  if (req.session) {
-    req.session._garbage = Date();
-    req.session.touch();
-  }
-  next();
-});
+// app.use((req, res, next) => {
+//   if (req.session) {
+//     req.session._garbage = Date();
+//     req.session.touch();
+//   }
+//   next();
+// });
 
 app.get("/", (req, res) => {
   res.send("Backend is running ✅");
@@ -46,10 +46,10 @@ app.get("/", (req, res) => {
 
 
 // Роуты
-app.use('/auth', authRoutes);
-app.use('/child', childRoutes);
-app.use('/teacher', teacherRoutes);
-app.use('/admin', adminRoutes);
+// app.use('/auth', authRoutes);
+// app.use('/child', childRoutes);
+// app.use('/teacher', teacherRoutes);
+// app.use('/admin', adminRoutes);
 
 
 const PORT = 5000;
