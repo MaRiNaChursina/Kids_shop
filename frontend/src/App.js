@@ -28,7 +28,7 @@ function App() {
     };
 
     const handleLogout = () => {
-      axios.post('http://localhost:5000/auth/logout').catch(() => {});
+      axios.post('http://91.229.9.244:5000/auth/logout').catch(() => {});
       localStorage.removeItem('user');
       setUser(null);
       window.location.href = '/';
