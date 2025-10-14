@@ -12,17 +12,17 @@ export default function AdminDashboard({ user }) {
   const localhost = '91.229.9.244';
 
   const loadChildren = async () => {
-    const res = await axios.get(`http://${localhost}:5000/admin/children`);
+    const res = await axios.get(`/admin/children`);
     setChildren(res.data);
   };
 
   const loadProducts = async () => {
-    const res = await axios.get(`http://${localhost}:5000/admin/products`);
+    const res = await axios.get(`/admin/products`);
     setProducts(res.data);
   };
 
   const loadSchedule = async () => {
-    const res = await axios.get(`http://${localhost}:5000/admin/schedule`);
+    const res = await axios.get(`/admin/schedule`);
     setSchedule(res.data);
   };
 
@@ -33,12 +33,12 @@ export default function AdminDashboard({ user }) {
   }, []);
 
   const addChild = async () => {
-    await axios.post(`http://${localhost}:5000/admin/addChild`, newChild);
+    await axios.post(`/admin/addChild`, newChild);
     loadChildren();
   };
 
   const addProduct = async () => {
-    await axios.post(`http://${localhost}:5000/admin/addProduct`, newProduct);
+    await axios.post(`/admin/addProduct`, newProduct);
     setNewProduct({ name:'', price:'', image:'' });
     loadProducts();
   };

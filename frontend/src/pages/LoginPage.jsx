@@ -10,7 +10,7 @@ export default function LoginPage({ setUser }) {
 
   const handleLogin = async () => {
     try {
-      const res = await axios.post('http://91.229.9.244:5000/auth/login', { login, password }, { withCredentials: true });
+      const res = await axios.post('/auth/login', { login, password }, { withCredentials: true });
       setUser(res.data);
     } catch {
       setError('Неверный логин или пароль');
