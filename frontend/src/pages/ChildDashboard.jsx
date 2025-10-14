@@ -12,11 +12,12 @@ export default function ChildDashboard({ user, setUser }) {
   const [showStore, setShowStore] = useState(false);
   const [favorites, setFavorites] = useState([]);
   const location = useLocation();
+  const localhost = '91.229.9.244';
 
   useEffect(() => {
     if (location.state?.favorites) {
       const updatedFavorites = location.state.favorites;
-      axios.get(`http://localhost:5000/child/${user.id}/store`).then(res => {
+      axios.get(`http://${localhost}:5000/child/${user.id}/store`).then(res => {
         const favProducts = res.data.filter(p => updatedFavorites.includes(p.id));
         setFavorites(favProducts);
       });
@@ -25,8 +26,8 @@ export default function ChildDashboard({ user, setUser }) {
 
   useEffect(() => {
     if (!user?.id) return;
-    axios.get(`http://localhost:5000/child/${user.id}`).then(res => setChild(res.data));
-    axios.get(`http://localhost:5000/child/${user.id}/next-lesson`)
+    axios.get(`http://${localhost}:5000/child/${user.id}`).then(res => setChild(res.data));
+    axios.get(`http://${localhost}:5000/child/${user.id}/next-lesson`)
       .then(res => setNextLesson(res.data))
       .catch(() => setNextLesson(null));
   }, [user.id]);

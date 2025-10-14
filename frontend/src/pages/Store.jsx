@@ -11,15 +11,16 @@ export default function Store({user}) {
   const [coins, setCoins] = useState(0);
   const navigate = useNavigate();
   const childId = user.id;
+  const localhost = '91.229.9.244';
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/child/${childId}/store`).then(res => setProducts(res.data));
-    axios.get(`http://localhost:5000/child/${childId}`).then(res => setCoins(res.data.coins || 0));
-    axios.get(`http://localhost:5000/child/${childId}/favorites`).then(res => setFavorites(res.data));
+    axios.get(`http://${localhost}:5000/child/${childId}/store`).then(res => setProducts(res.data));
+    axios.get(`http://${localhost}:5000/child/${childId}`).then(res => setCoins(res.data.coins || 0));
+    axios.get(`http://${localhost}:5000/child/${childId}/favorites`).then(res => setFavorites(res.data));
   }, []);
 
   const toggleFavorite = async (productId) => {
-    const res = await axios.post(`http://localhost:5000/child/${childId}/favorites/${productId}`);
+    const res = await axios.post(`http://${localhost}:5000/child/${childId}/favorites/${productId}`);
     setFavorites(res.data);
   };
 

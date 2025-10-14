@@ -11,6 +11,7 @@ export default function TeacherDashboard({ user, setUser }) {
   const [checks, setChecks] = useState({});
   const [salary, setSalary] = useState({ total: 0, history: [] });
   const [showSalar, setShowSalar] = useState(false);
+  const localhost = '91.229.9.244';
 
   const teacherRate = user?.rate ?? 100;
 
@@ -22,7 +23,7 @@ export default function TeacherDashboard({ user, setUser }) {
   // Загружаем группы
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/teacher/${user.id}/groups`)
+      .get(`http://${localhost}:5000/teacher/${user.id}/groups`)
       .then((res) => setGroups(res.data))
       .catch((err) => console.error("Ошибка при загрузке групп:", err));
   }, [user.id]);
@@ -35,7 +36,7 @@ export default function TeacherDashboard({ user, setUser }) {
     } else {
       // Если нет в localStorage — подтягиваем с сервера
       axios
-        .get(`http://localhost:5000/teacher/${user.id}/salary`)
+        .get(`http://${localhost}:5000/teacher/${user.id}/salary`)
         .then((res) => {
           const data = res.data || { total: 0, history: [] };
           // Сортируем историю: новые сверху
@@ -52,7 +53,7 @@ export default function TeacherDashboard({ user, setUser }) {
   const loadChildren = (group) => {
     setSelectedGroup(group);
     axios
-      .get(`http://localhost:5000/teacher/${user.id}/group/${group}`)
+      .get(`http://${localhost}:5000/teacher/${user.id}/group/${group}`)
       .then((res) => {
         setChildren(res.data);
         setChecks({});
@@ -140,8 +141,8 @@ export default function TeacherDashboard({ user, setUser }) {
     localStorage.setItem(`salary_${user.id}`, JSON.stringify(newSalary));
 
     try {
-      await axios.post(`http://localhost:5000/teacher/${user.id}/award`, { awards: awardArr });
-      await axios.post(`http://localhost:5000/teacher/${user.id}/salary`, {
+      await axios.post(`http://${localhost}:5000/teacher/${user.id}/award`, { awards: awardArr });
+      await axios.post(`http://${localhost}:5000/teacher/${user.id}/salary`, {
         amount: salaryAmount,
         group: selectedGroup,
       });

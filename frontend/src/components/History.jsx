@@ -4,6 +4,7 @@ import styles from '../styles/History.module.css';
 
 function formatDate(input) {
   const d = new Date(input);
+  
   if (isNaN(d)) return input;
   return d
     .toLocaleString('ru-RU', {
@@ -34,8 +35,9 @@ export default function History({ childId }) {
   useEffect(() => {
     if (!childId || !hasMore) return;
     setLoading(true);
+    const localhost = '91.229.9.244';
     axios
-      .get(`http://localhost:5000/child/${childId}/history?page=${page}&limit=${limit}`)
+      .get(`http://${localhost}:5000/child/${childId}/history?page=${page}&limit=${limit}`)
       .then(res => {
         const { history: newHistory, page: currentPage, pages } = res.data;
 

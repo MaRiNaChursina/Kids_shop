@@ -9,19 +9,20 @@ export default function AdminDashboard({ user }) {
   const [newProduct, setNewProduct] = useState({ name:'', price:'', image:'' });
   const [schedule, setSchedule] = useState([]);
   const [newLesson, setNewLesson] = useState({ time:'', subject:'', group:'' });
+  const localhost = '91.229.9.244';
 
   const loadChildren = async () => {
-    const res = await axios.get('http://localhost:5000/admin/children');
+    const res = await axios.get(`http://${localhost}:5000/admin/children`);
     setChildren(res.data);
   };
 
   const loadProducts = async () => {
-    const res = await axios.get('http://localhost:5000/admin/products');
+    const res = await axios.get(`http://${localhost}:5000/admin/products`);
     setProducts(res.data);
   };
 
   const loadSchedule = async () => {
-    const res = await axios.get('http://localhost:5000/admin/schedule');
+    const res = await axios.get(`http://${localhost}:5000/admin/schedule`);
     setSchedule(res.data);
   };
 
@@ -32,34 +33,34 @@ export default function AdminDashboard({ user }) {
   }, []);
 
   const addChild = async () => {
-    await axios.post('http://localhost:5000/admin/addChild', newChild);
+    await axios.post(`http://${localhost}:5000/admin/addChild`, newChild);
     loadChildren();
   };
 
   const addProduct = async () => {
-    await axios.post('http://localhost:5000/admin/addProduct', newProduct);
+    await axios.post(`http://${localhost}:5000/admin/addProduct`, newProduct);
     setNewProduct({ name:'', price:'', image:'' });
     loadProducts();
   };
 
   const editProduct = async (id, updated) => {
-    await axios.put(`http://localhost:5000/admin/editProduct/${id}`, updated);
+    await axios.put(`http://${localhost}:5000/admin/editProduct/${id}`, updated);
     loadProducts();
   };
 
   const deleteProduct = async (id) => {
-    await axios.delete(`http://localhost:5000/admin/deleteProduct/${id}`);
+    await axios.delete(`http://${localhost}:5000/admin/deleteProduct/${id}`);
     loadProducts();
   };
 
   const addLesson = async () => {
-    await axios.post('http://localhost:5000/admin/schedule/add', newLesson);
+    await axios.post(`http://${localhost}:5000/admin/schedule/add`, newLesson);
     setNewLesson({ time:'', subject:'', group:'' });
     loadSchedule();
   };
 
   const deleteLesson = async (id) => {
-    await axios.delete(`http://localhost:5000/admin/schedule/delete/${id}`);
+    await axios.delete(`http://${localhost}:5000/admin/schedule/delete/${id}`);
     loadSchedule();
   };
 
@@ -73,7 +74,7 @@ export default function AdminDashboard({ user }) {
     link: prompt("Введите новую ссылку:", lesson.link) || lesson.link,
   };
 
-  axios.put(`http://localhost:5000/admin/schedule/edit/${lesson.id}`, updated)
+  axios.put(`http://${localhost}:5000/admin/schedule/edit/${lesson.id}`, updated)
     .then(res => {
       alert(res.data.message);
       setSchedule(schedule.map(l => l.id === lesson.id ? updated : l));
@@ -82,7 +83,7 @@ export default function AdminDashboard({ user }) {
 };
 
 const handleDelete = (id) => {
-  axios.delete(`http://localhost:5000/admin/schedule/delete/${id}`)
+  axios.delete(`http://${localhost}:5000/admin/schedule/delete/${id}`)
     .then(res => {
       alert(res.data.message);
       setSchedule(schedule.filter(l => l.id !== id));
@@ -92,7 +93,7 @@ const handleDelete = (id) => {
 
 const [teachers, setTeachers] = useState([]);
 const loadTeachers = async () => {
-  const res = await axios.get('http://localhost:5000/admin/teachers');
+  const res = await axios.get(`http://${localhost}:5000/admin/teachers`);
   setTeachers(res.data);
 };
 useEffect(() => { loadTeachers(); }, []);
@@ -104,7 +105,7 @@ useEffect(() => { loadTeachers(); }, []);
       {teachers.map(t => (
         <div key={t.id}>
           {t.name} | группы: {t.groups.join(", ")}
-          <button onClick={() => axios.delete(`http://localhost:5000/admin/deleteTeacher/${t.id}`).then(loadTeachers)}>Удалить</button>
+          <button onClick={() => axios.delete(`http://${localhost}:5000/admin/deleteTeacher/${t.id}`).then(loadTeachers)}>Удалить</button>
         </div>
       ))}
 

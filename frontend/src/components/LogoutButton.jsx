@@ -2,9 +2,10 @@
 import axios from "axios";
 
 export default function LogoutButton({ setUser }) {
+  const localhost = '91.229.9.244';
   const handleLogout = async () => {
     try {
-      await axios.post("http://localhost:5000/auth/logout", {}, { withCredentials: true });
+      await axios.post(`http://${localhost}:5000/auth/logout`, {}, { withCredentials: true });
     } catch (err) {
       console.error("Ошибка при выходе:", err);
     }

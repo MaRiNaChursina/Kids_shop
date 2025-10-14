@@ -6,13 +6,14 @@ export default function GroupPage() {
   const { groupId } = useParams();
   const [students, setStudents] = useState([]);
   const [schedule, setSchedule] = useState([]);
+  const localhost = '91.229.9.244';
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/admin/groups/${groupId}/students`)
+    axios.get(`http://${localhost}:5000/admin/groups/${groupId}/students`)
       .then(res => setStudents(res.data))
       .catch(err => console.error(err));
 
-    axios.get(`http://localhost:5000/admin/groups/${groupId}/schedule`)
+    axios.get(`http://${localhost}:5000/admin/groups/${groupId}/schedule`)
       .then(res => setSchedule(res.data))
       .catch(err => console.error(err));
   }, [groupId]);
