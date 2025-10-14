@@ -38,6 +38,10 @@ app.use((req, res, next) => {
   next();
 });
 
+app.get("/", (req, res) => {
+  res.send("Backend is running ✅");
+});
+
 // Роуты
 app.use('/auth', authRoutes);
 app.use('/child', childRoutes);
@@ -45,4 +49,4 @@ app.use('/teacher', teacherRoutes);
 app.use('/admin', adminRoutes);
 
 const PORT = 5000;
-app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
+app.listen(PORT, '0.0.0.0', () => console.log(`✅ Server running on port ${PORT}`));
