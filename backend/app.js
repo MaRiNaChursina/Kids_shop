@@ -43,18 +43,14 @@ app.get("/", (req, res) => {
   res.send("Backend is running ✅");
 });
 
-app.get('/', (req, res) => {
-  res.send('✅ Backend is alive!');
-});
+
 
 // Роуты
 app.use('/auth', authRoutes);
 app.use('/child', childRoutes);
 app.use('/teacher', teacherRoutes);
 app.use('/admin', adminRoutes);
-app.get('/', (req, res) => {
-  res.send('✅ Backend is alive!');
-});
+
 
 const PORT = 5000;
 app.listen(PORT, '0.0.0.0', () => console.log(`✅ Server running on port ${PORT}`));
