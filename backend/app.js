@@ -42,6 +42,10 @@ app.get("/", (req, res) => {
   res.send("Backend is running ✅");
 });
 
+app.get('/', (req, res) => {
+  res.send('✅ Backend is alive!');
+});
+
 // Роуты
 app.use('/auth', authRoutes);
 app.use('/child', childRoutes);
