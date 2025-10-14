@@ -7,7 +7,7 @@ const childRoutes = require('./routes/child');
 const teacherRoutes = require('./routes/teacher');
 const adminRoutes = require('./routes/admin');
 const local = "localhost:3000"
-const server= "http://91.229.9.244"
+const server= "http://91.229.9.244:3000"
 const app = express();
 app.use('/images', express.static('public/images'));
 
