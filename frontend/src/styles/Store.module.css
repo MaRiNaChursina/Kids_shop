@@ -1,0 +1,166 @@
+﻿/* ================= Общий контейнер магазина ================= */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  background: #f9fafb;
+  font-family: "Poppins", sans-serif;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #a0c4ff74, #beb2ff6f, #ffc6ffa4);
+}
+
+/* Заголовок магазина */
+.storeHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  background-color: #b534ff89;
+  /* background-color: #1f5fd1; */
+  /* background: linear-gradient(135deg, #a0c4ff, #bdb2ff, #ffc6ff); */
+  border-radius: 10px;
+  padding: 0 10px;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* Коины */
+.coinsBox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  color: #2a7dff;
+}
+
+/* Кнопка назад */
+.backButton {
+  background: #2a7dff;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.backButton:hover {
+  background: #1f5fd1;
+  transform: translateY(-2px);
+}
+
+/* ================= Сетка товаров ================= */
+.storeContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 24px;
+  justify-items: center;
+}
+
+/* ================= Карточка товара ================= */
+.productCard {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  width: 100%;
+  max-width: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.productCard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* Обертка изображения */
+.productImage {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-bottom: 1px solid #eee;
+}
+
+/* Кнопка избранного */
+.heartButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* ================= Информация о товаре ================= */
+h4 {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #222;
+  margin: 12px 0 4px 0;
+  text-align: center;
+}
+
+.AstroHeader{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  background-color: #fff;
+  width: 70px;
+  gap: 3px;
+}
+
+.AstroHeader>.astacoin{
+  margin-top: 14px;
+}
+
+.storeHeader_right{
+  display: flex;
+  gap: 10px;
+}
+
+.astacoin {
+  width: 20px;
+  height: 20px;
+  background: url("../images/astrocat.png") center/contain no-repeat;
+  animation: float1 3s ease-in-out both infinite;
+  margin-top: 10px;
+}
+
+.astacoin_prise {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.astacoin_prise_p {
+  font-weight: 600;
+  color: #2a7dff;
+}
+
+/* ================= Адаптив ================= */
+@media (max-width: 900px) {
+  .storeContainer {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .storeContainer {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+
+  .backButton {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+}

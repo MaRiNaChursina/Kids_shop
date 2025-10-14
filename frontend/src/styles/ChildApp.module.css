@@ -1,0 +1,168 @@
+﻿/* 🌈 Общий стиль для детского интерфейса */
+.container {
+  padding: 40px;
+  font-family: "Comic Neue", "Poppins", sans-serif;
+  color: #333;
+  background: linear-gradient(180deg, #f6f9ff 0%, #ffffff 100%);
+  min-height: 100vh;
+}
+
+.title {
+  font-size: 2rem;
+  color: #4b6bff;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.subtitle {
+  font-size: 1.4rem;
+  margin-top: 20px;
+  color: #ff7b7b;
+}
+
+/* 💰 Блок с коинами */
+.coinsBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff3cd;
+  border-radius: 20px;
+  padding: 10px 20px;
+  font-weight: bold;
+  color: #795548;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  margin: 10px auto 20px;
+  width: fit-content;
+}
+
+/* 🛍 Магазин */
+.storeContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  justify-content: center;
+}
+
+.productCard {
+  background: #fff;
+  border-radius: 20px;
+  padding: 15px;
+  width: 180px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.productCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+.productImage {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 15px;
+  margin-bottom: 10px;
+}
+
+.heartButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.backButton {
+  background: #f05a5a;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 15px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.backButton:hover {
+  background: #e04848;
+}
+
+/* 🧒 Dashboard */
+.dashboard {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.favoriteList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.favoriteCard {
+  border: 1px solid #eee;
+  border-radius: 16px;
+  padding: 10px;
+  text-align: center;
+  background: #ffffff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.favoriteCard:hover {
+  transform: scale(1.05);
+}
+
+/* 🧩 Login */
+.loginContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: linear-gradient(145deg, #f9d6ff, #d6e6ff);
+}
+
+.loginBox {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 40px 50px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  width: 320px;
+  text-align: center;
+}
+
+.loginBox input {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+}
+
+.loginBox button {
+  background: #4b6bff;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.loginBox button:hover {
+  background: #3c59d6;
+}
+
+.error {
+  color: red;
+  margin-top: 10px;
+}

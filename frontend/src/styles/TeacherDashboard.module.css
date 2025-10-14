@@ -1,0 +1,172 @@
+﻿.rate {
+  margin-top: 5px;
+  font-size: 15px;
+  color: #444;
+}
+/* Основной контейнер */
+.dashboard {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 20px;
+  background-color: #f5f7fa;
+  min-height: 100vh;
+}
+
+/* Шапка */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #3f51b5;
+  color: #fff;
+  padding: 15px 100px 15px 25px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.header h1 {
+  font-size: 24px;
+  margin: 0;
+}
+
+/* Правая часть шапки */
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Зарплата */
+.salaryBox {
+  background-color: #fff;
+  color: #333;
+  padding: 6px 12px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: bold;
+}
+
+.showSalaryBtn {
+  background-color: #3f51b5;
+  color: #fff;
+  border: none;
+  padding: 4px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+/* История зарплаты */
+.salaryHistorySection {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.salaryHistorySection ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.salaryHistorySection li {
+  margin-bottom: 5px;
+}
+
+/* Группы */
+.groups {
+  margin-bottom: 20px;
+}
+
+.groupList {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.groupButton {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #3f51b5;
+  color: #fff;
+  transition: 0.2s;
+}
+
+.groupButton:hover {
+  background-color: #d5d5d5;
+}
+
+.activeGroup {
+  background-color: #fff;
+  color: #030000;
+}
+
+/* Таблица начислений */
+.tableSection {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin-bottom: 20px;
+}
+
+.tableSection h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #3f51b5;
+}
+
+/* Таблица начислений */
+.awardTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 15px;
+}
+
+.awardTable th,
+.awardTable td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+}
+
+.awardTable th {
+  background-color: #f0f0f0;
+  font-weight: 600;
+}
+
+.awardTable td input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+/* Кнопка начисления */
+.saveButton {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.2s;
+}
+
+.saveButton:hover {
+  background-color: #45a049;
+}
+
+/* Мелкие стили для текста и ссылок */
+p, li {
+  font-size: 14px;
+  color: #333;
+}
+
+button {
+  font-family: inherit;
+}
+

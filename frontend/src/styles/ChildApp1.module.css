@@ -1,0 +1,176 @@
+﻿/* === Общие стили === */
+.container {
+  min-height: 100vh;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #a0c4ff, #bdb2ff, #ffc6ff);
+  color: #222;
+  font-family: "Poppins", "Comic Neue", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* === Заголовки === */
+.title {
+  font-size: 2.2rem;
+  color: #3a0ca3;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.15);
+  font-weight: 700;
+}
+
+.subtitle {
+  color: #5f0f40;
+  font-size: 1.4rem;
+  margin-top: 30px;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* === Инфоблок с коинами === */
+.coinsBox {
+  background: #fefae0;
+  border: 2px solid #ffd166;
+  color: #7f5539;
+  font-size: 1.2rem;
+  padding: 12px 25px;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(255, 209, 102, 0.4);
+  margin: 10px 0 25px;
+  font-weight: 600;
+  transition: transform 0.2s ease;
+  display: flex;
+
+}
+
+.coinsBox:hover {
+  transform: scale(1.05);
+}
+
+/* === Кнопка магазина === */
+.backButton {
+  background: linear-gradient(135deg, #48cae4, #0096c7);
+  color: #fff;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 150, 199, 0.4);
+}
+
+.backButton:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, #00b4d8, #0077b6);
+  box-shadow: 0 6px 15px rgba(0, 150, 199, 0.6);
+}
+
+/* === Блок избранного === */
+.favoriteList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 15px;
+  padding: 10px;
+}
+
+.favoriteCard {
+  background: #fff;
+  border-radius: 20px;
+  padding: 15px;
+  width: 130px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+}
+
+.favoriteCard:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+}
+
+.favoriteCard img {
+  width: 80px;
+  height: 80px;
+  border-radius: 15px;
+  object-fit: cover;
+  margin-bottom: 8px;
+}
+
+.favoriteCard p {
+  margin: 3px 0;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+/* === Секция урока === */
+.dashboard p {
+  font-size: 1.1rem;
+  color: #333;
+  margin-top: 8px;
+  text-align: center;
+}
+
+/* === Анимация приветствия персонажа === */
+.character {
+  width: 120px;
+  height: 120px;
+  background: url("../images/dack.png") center/contain no-repeat;
+  animation: float 3s ease-in-out infinite;
+  margin-top: 10px;
+}
+
+.astacoin {
+  width: 20px;
+  height: 20px;
+  background: url("../images/astrocat.png") center/contain no-repeat;
+  animation: float1 3s ease-in-out both infinite;
+  margin-top: 0px;
+}
+
+.astacoin_prise{
+  display: flex;
+  font-size: 20px;
+}
+.astacoin_prise_p{
+  margin-top: 10px;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes float1 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+
+/* === Мобильная адаптация === */
+@media (max-width: 600px) {
+  .title {
+    font-size: 1.7rem;
+  }
+  .subtitle {
+    font-size: 1.2rem;
+  }
+  .coinsBox {
+    font-size: 1rem;
+  }
+  .favoriteCard {
+    width: 110px;
+  }
+}
