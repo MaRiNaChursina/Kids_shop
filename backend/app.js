@@ -46,7 +46,7 @@ app.get("/", (req, res) => {
 
 
 // Роуты
-// app.use('/auth', authRoutes);
+app.use('/auth', authRoutes);
 // app.use('/child', childRoutes);
 // app.use('/teacher', teacherRoutes);
 // app.use('/admin', adminRoutes);
