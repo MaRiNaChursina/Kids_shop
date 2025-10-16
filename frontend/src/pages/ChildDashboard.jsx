@@ -47,7 +47,7 @@ export default function ChildDashboard({ user, setUser }) {
           <p>{nextLesson.day} {nextLesson.time} — {nextLesson.subject}</p>
           {nextLesson.link && <a href={nextLesson.link} target="_blank" rel="noopener noreferrer">Перейти в урок</a>}
         </div>
-      ) : <p>Скоро появятся новые уроки ✨</p>}
+      ) : <p>Скоро появятся расписание ✨</p>}
 
       <Link to="/store" state={{ user }}><button className={styles.backButton}>🛍 В магазин</button></Link>
 

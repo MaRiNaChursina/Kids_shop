@@ -104,7 +104,7 @@ app.get("/", (req, res) => {
 
 app.use('/auth', authRoutes);
 app.use('/child', childRoutes);
-// app.use('/teacher', teacherRoutes);
+app.use('/teacher', teacherRoutes);
 // app.use('/admin', adminRoutes);
 
 const PORT = 5000;

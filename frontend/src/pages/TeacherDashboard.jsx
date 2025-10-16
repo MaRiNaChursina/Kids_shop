@@ -23,7 +23,7 @@ export default function TeacherDashboard({ user, setUser }) {
   // Загружаем группы
   useEffect(() => {
     axios
-      .get(`http://${localhost}:5000/teacher/${user.id}/groups`)
+      .get(`/teacher/${user.id}/groups`)
       .then((res) => setGroups(res.data))
       .catch((err) => console.error("Ошибка при загрузке групп:", err));
   }, [user.id]);
@@ -36,7 +36,7 @@ export default function TeacherDashboard({ user, setUser }) {
     } else {
       // Если нет в localStorage — подтягиваем с сервера
       axios
-        .get(`http://${localhost}:5000/teacher/${user.id}/salary`)
+        .get(`/teacher/${user.id}/salary`)
         .then((res) => {
           const data = res.data || { total: 0, history: [] };
           // Сортируем историю: новые сверху
@@ -53,7 +53,7 @@ export default function TeacherDashboard({ user, setUser }) {
   const loadChildren = (group) => {
     setSelectedGroup(group);
     axios
-      .get(`http://${localhost}:5000/teacher/${user.id}/group/${group}`)
+      .get(`/teacher/${user.id}/group/${group}`)
       .then((res) => {
         setChildren(res.data);
         setChecks({});
@@ -141,8 +141,8 @@ export default function TeacherDashboard({ user, setUser }) {
     localStorage.setItem(`salary_${user.id}`, JSON.stringify(newSalary));
 
     try {
-      await axios.post(`http://${localhost}:5000/teacher/${user.id}/award`, { awards: awardArr });
-      await axios.post(`http://${localhost}:5000/teacher/${user.id}/salary`, {
+      await axios.post(`/teacher/${user.id}/award`, { awards: awardArr });
+      await axios.post(`/teacher/${user.id}/salary`, {
         amount: salaryAmount,
         group: selectedGroup,
       });
