@@ -318,7 +318,8 @@ export default function TeacherDashboard({ user, setUser }) {
 
           <section className={styles.oneTimeAwards}>
           <h3>🎁 Единоразовые бонусы</h3>
-          {children.map((child) => (
+          <button className={styles.oneTimeBtn}>Скоро появится</button>
+          {/* {children.map((child) => (
             <div key={child.id} className={styles.childBonus}>
               <span>{child.name}</span>
               {Object.keys(autoRules)
@@ -333,7 +334,7 @@ export default function TeacherDashboard({ user, setUser }) {
                   </button>
                 ))}
             </div>
-          ))}
+          ))} */}
         </section>
 
           <button className={styles.saveButton} onClick={saveAwards}>
