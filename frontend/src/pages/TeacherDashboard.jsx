@@ -190,25 +190,51 @@ export default function TeacherDashboard({ user, setUser }) {
     }
   };
 
-  const handleOneTimeAward = async (key) => {
-    try {
-      const now = new Date().toISOString();
-      const award = autoRules[key];
-      const selected = children.map((c) => ({
-        childId: c.id,
-        coins: award.value,
-        reason: award.label,
-        date: now,
-        group: selectedGroup,
-      }));
+ const handleOneTimeAwardForChild = async (childId, key) => {
+  try {
+    const now = new Date().toISOString();
+    const award = autoRules[key];
 
-      await axios.post(`/teacher/${user.id}/award`, { awards: selected });
-      alert(`🎉 Начислен бонус: ${award.label} (+${award.value}) каждому ученику`);
-    } catch (err) {
-      console.error("Ошибка при начислении бонуса:", err);
-      alert("Ошибка при начислении бонуса!");
+    // Проверяем ограничения
+    const historyRes = await axios.get(`/child/${childId}/awards`);
+    const history = historyRes.data || [];
+
+    // Если бонус раз в год — проверяем, был ли уже начислен в этом году
+    if (award.oncePerYear) {
+      const alreadyGivenThisYear = history.some(h => 
+        h.reason === award.label &&
+        new Date(h.date).getFullYear() === new Date().getFullYear()
+      );
+      if (alreadyGivenThisYear) {
+        alert(`❌ Бонус "${award.label}" уже был начислен этому ребёнку в этом году`);
+        return;
+      }
     }
-  };
+
+    // Если бонус раз за пост — проверяем, был ли уже начислен (можно по group/id)
+    if (award.oncePerPost) {
+      const alreadyGiven = history.some(h => h.reason === award.label);
+      if (alreadyGiven) {
+        alert(`❌ Бонус "${award.label}" уже был начислен этому ребёнку`);
+        return;
+      }
+    }
+
+    const selected = [{
+      childId,
+      coins: award.value,
+      reason: award.label,
+      date: now,
+      group: selectedGroup,
+    }];
+
+    await axios.post(`/teacher/${user.id}/award`, { awards: selected });
+    alert(`🎉 Начислен бонус: ${award.label} (+${award.value}) для ребенка`);
+  } catch (err) {
+    console.error("Ошибка при начислении бонуса:", err);
+    alert("Ошибка при начислении бонуса!");
+  }
+};;
 
 
   return (
@@ -291,19 +317,24 @@ export default function TeacherDashboard({ user, setUser }) {
           </table>
 
           <section className={styles.oneTimeAwards}>
-            <h3>🎁 Единоразовые бонусы</h3>
-            {Object.keys(autoRules)
-              .filter(k => autoRules[k].oncePerYear || autoRules[k].oncePerPost)
-              .map((key) => (
-                <button
-                  key={key}
-                  onClick={() => handleOneTimeAward(key)}
-                  className={styles.oneTimeBtn}
-                >
-                  {autoRules[key].label} (+{autoRules[key].value})
-                </button>
-              ))}
-          </section>
+          <h3>🎁 Единоразовые бонусы</h3>
+          {children.map((child) => (
+            <div key={child.id} className={styles.childBonus}>
+              <span>{child.name}</span>
+              {Object.keys(autoRules)
+                .filter(k => autoRules[k].oncePerYear || autoRules[k].oncePerPost)
+                .map((key) => (
+                  <button
+                    key={key}
+                    onClick={() => handleOneTimeAwardForChild(child.id, key)}
+                    className={styles.oneTimeBtn}
+                  >
+                    {autoRules[key].label} (+{autoRules[key].value})
+                  </button>
+                ))}
+            </div>
+          ))}
+        </section>
 
           <button className={styles.saveButton} onClick={saveAwards}>
             💫 Начислить
