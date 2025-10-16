@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import rules from "../constants/rules";
+import {rules, autoRules} from "../constants/rules";
 import LogoutButton from "../components/LogoutButton";
 import styles from "../styles/TeacherDashboard.module.css";
 
@@ -119,11 +119,15 @@ export default function TeacherDashboard({ user, setUser }) {
         return { childId: child.id, coins, reasons, date: now, group: selectedGroup };
       })
       .filter(Boolean);
+       const autoBonusesPromises = children.map((child) => checkAutoBonuses(child));
+        const autoBonuses = (await Promise.all(autoBonusesPromises)).flat();
 
-    if (awardArr.length === 0) {
-      alert("Нет начислений для сохранения!");
-      return;
-    }
+        const finalAwards = [...awardArr, ...autoBonuses].filter(Boolean);
+
+     if (finalAwards.length === 0) {
+        alert("Нет начислений для сохранения!");
+        return;
+      }
 
     const presentChildren = children.filter((c) => !(checks[c.id]?.absent));
     let salaryAmount = presentChildren.length * teacherRate;
@@ -141,7 +145,7 @@ export default function TeacherDashboard({ user, setUser }) {
     localStorage.setItem(`salary_${user.id}`, JSON.stringify(newSalary));
 
     try {
-      await axios.post(`/teacher/${user.id}/award`, { awards: awardArr });
+      await axios.post(`/teacher/${user.id}/award`, { awards: finalAwards  });
       await axios.post(`/teacher/${user.id}/salary`, {
         amount: salaryAmount,
         group: selectedGroup,
@@ -155,6 +159,57 @@ export default function TeacherDashboard({ user, setUser }) {
       alert("Ошибка при начислении астракоинов или зарплаты!");
     }
   };
+
+    // Проверка автоматических бонусов
+  const checkAutoBonuses = async (child) => {
+    try {
+      const res = await axios.get(`/child/${child.id}/attendance`);
+      const history = res.data || [];
+
+      // Последние 4 записи и нет пропусков?
+      const last4 = history.slice(-4);
+      const allPresent = last4.length === 4 && last4.every(h => !h.absent);
+
+      const bonuses = [];
+
+      if (allPresent) {
+        bonuses.push({
+          childId: child.id,
+          coins: autoRules.regularAttendance.value,
+          reason: autoRules.regularAttendance.label,
+          date: new Date().toISOString(),
+          type: "auto"
+        });
+      }
+
+      // Здесь можно добавить проверку других условий (например, project, review и т.д.)
+      return bonuses;
+    } catch (err) {
+      console.error("Ошибка при проверке авто-бонусов:", err);
+      return [];
+    }
+  };
+
+  const handleOneTimeAward = async (key) => {
+    try {
+      const now = new Date().toISOString();
+      const award = autoRules[key];
+      const selected = children.map((c) => ({
+        childId: c.id,
+        coins: award.value,
+        reason: award.label,
+        date: now,
+        group: selectedGroup,
+      }));
+
+      await axios.post(`/teacher/${user.id}/award`, { awards: selected });
+      alert(`🎉 Начислен бонус: ${award.label} (+${award.value}) каждому ученику`);
+    } catch (err) {
+      console.error("Ошибка при начислении бонуса:", err);
+      alert("Ошибка при начислении бонуса!");
+    }
+  };
+
 
   return (
     <div className={styles.dashboard}>
@@ -234,6 +289,21 @@ export default function TeacherDashboard({ user, setUser }) {
               ))}
             </tbody>
           </table>
+
+          <section className={styles.oneTimeAwards}>
+            <h3>🎁 Единоразовые бонусы</h3>
+            {Object.keys(autoRules)
+              .filter(k => autoRules[k].oncePerYear || autoRules[k].oncePerPost)
+              .map((key) => (
+                <button
+                  key={key}
+                  onClick={() => handleOneTimeAward(key)}
+                  className={styles.oneTimeBtn}
+                >
+                  {autoRules[key].label} (+{autoRules[key].value})
+                </button>
+              ))}
+          </section>
 
           <button className={styles.saveButton} onClick={saveAwards}>
             💫 Начислить
