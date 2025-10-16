@@ -4,7 +4,7 @@
   color: #444;
 }
 /* Основной контейнер */
-.dashboard {
+/* .dashboard {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   padding: 20px;
   background-color: #f5f7fa;
@@ -12,7 +12,7 @@
 }
 
 /* Шапка */
-.header {
+/* .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -26,17 +26,17 @@
 .header h1 {
   font-size: 24px;
   margin: 0;
-}
+} */
 
 /* Правая часть шапки */
-.headerRight {
+/* .headerRight {
   display: flex;
   align-items: center;
   gap: 15px;
-}
+} */
 
 /* Зарплата */
-.salaryBox {
+/* .salaryBox {
   background-color: #fff;
   color: #333;
   padding: 6px 12px;
@@ -55,10 +55,10 @@
   border-radius: 4px;
   cursor: pointer;
   font-size: 12px;
-}
+} */ 
 
 /* История зарплаты */
-.salaryHistorySection {
+/* .salaryHistorySection {
   background-color: #fff;
   padding: 15px;
   border-radius: 8px;
@@ -75,7 +75,7 @@
 }
 
 /* Группы */
-.groups {
+/* .groups {
   margin-bottom: 20px;
 }
 
@@ -102,10 +102,10 @@
 .activeGroup {
   background-color: #fff;
   color: #030000;
-}
+} */
 
 /* Таблица начислений */
-.tableSection {
+/* .tableSection {
   background-color: #fff;
   padding: 20px;
   border-radius: 8px;
@@ -117,10 +117,10 @@
   margin-top: 0;
   margin-bottom: 15px;
   color: #3f51b5;
-}
+} */
 
 /* Таблица начислений */
-.awardTable {
+/* .awardTable {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 15px;
@@ -142,10 +142,10 @@
   width: 20px;
   height: 20px;
   cursor: pointer;
-}
+} */
 
 /* Кнопка начисления */
-.saveButton {
+/* .saveButton {
   background-color: #4caf50;
   color: white;
   border: none;
@@ -158,9 +158,198 @@
 
 .saveButton:hover {
   background-color: #45a049;
-}
+} */
 
 /* Мелкие стили для текста и ссылок */
+/* p, li {
+  font-size: 14px;
+  color: #333;
+}
+
+button {
+  font-family: inherit;
+}
+ */
+/* 🌟 Основной контейнер */
+.dashboard {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 20px;
+  background-color: #f5f7fa;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* 🧭 Шапка */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #3f51b5;
+  color: #fff;
+  padding: 15px 25px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.header h1 {
+  font-size: 22px;
+  margin: 0;
+}
+
+/* ⚙️ Правая часть шапки */
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+/* 💰 Блок зарплаты */
+.salaryBox {
+  background-color: #fff;
+  color: #333;
+  padding: 6px 12px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.showSalaryBtn {
+  background-color: #3f51b5;
+  color: #fff;
+  border: none;
+  padding: 4px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+/* 💸 История зарплаты */
+.salaryHistorySection {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.salaryHistorySection p {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.salaryHistorySection ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.salaryHistorySection li {
+  margin-bottom: 5px;
+}
+
+/* 👩‍🏫 Группы */
+.groups {
+  margin-bottom: 20px;
+}
+
+.groupList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-start;
+}
+
+.groupButton {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #3f51b5;
+  color: #fff;
+  transition: 0.2s;
+  font-size: 14px;
+}
+
+.groupButton:hover {
+  background-color: #5c6bc0;
+}
+
+.activeGroup {
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #3f51b5;
+}
+
+/* 📋 Таблица начислений */
+.tableSection {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+.tableSection h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #3f51b5;
+  font-size: 18px;
+  text-align: center;
+}
+
+.awardTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 15px;
+  min-width: 600px; /* чтобы скролл был понятен */
+}
+
+.awardTable th,
+.awardTable td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.awardTable th {
+  background-color: #f0f0f0;
+  font-weight: 600;
+}
+
+.awardTable td input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+/* ✨ Кнопка начисления */
+.saveButton {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.2s;
+  width: 100%;
+  max-width: 400px;
+  display: block;
+  margin: 0 auto;
+}
+
+.saveButton:hover {
+  background-color: #45a049;
+}
+
+/* 🪶 Мелкие элементы */
 p, li {
   font-size: 14px;
   color: #333;
@@ -170,3 +359,113 @@ button {
   font-family: inherit;
 }
 
+/* ————————————————————————————————
+ 📱 АДАПТИВНОСТЬ 
+———————————————————————————————*/
+
+/* Для планшетов (до 992px) */
+@media (max-width: 992px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px;
+  }
+
+  .headerRight {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .salaryBox {
+    font-size: 13px;
+  }
+
+  .groupButton {
+    font-size: 13px;
+    padding: 7px 10px;
+  }
+}
+
+/* Для телефонов (до 768px) */
+@media (max-width: 768px) {
+  .dashboard {
+    padding: 15px;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .header h1 {
+    font-size: 20px;
+  }
+
+  .salaryBox {
+    font-size: 13px;
+    padding: 5px 8px;
+  }
+
+  .showSalaryBtn {
+    font-size: 11px;
+    padding: 4px 8px;
+  }
+
+  .tableSection {
+    padding: 15px;
+  }
+
+  .saveButton {
+    font-size: 15px;
+    padding: 10px 20px;
+  }
+}
+
+/* Для маленьких экранов (до 480px) */
+@media (max-width: 480px) {
+  .dashboard {
+    padding: 10px;
+  }
+
+  .header {
+    padding: 10px;
+    border-radius: 6px;
+  }
+
+  .header h1 {
+    font-size: 18px;
+  }
+
+  .salaryBox {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    font-size: 12px;
+  }
+
+  .groupButton {
+    font-size: 12px;
+    padding: 6px 8px;
+    flex: 1 1 45%;
+    text-align: center;
+  }
+
+  .tableSection h3 {
+    font-size: 16px;
+  }
+
+  .awardTable {
+    font-size: 12px;
+  }
+
+  .awardTable th,
+  .awardTable td {
+    padding: 6px;
+  }
+
+  .saveButton {
+    font-size: 14px;
+    padding: 10px;
+  }
+}

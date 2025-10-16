@@ -160,17 +160,130 @@
 }
 
 /* === Мобильная адаптация === */
-@media (max-width: 600px) {
+/* === Мобильная адаптация === */
+@media (max-width: 768px) {
+  .container {
+    padding: 20px 10px;
+  }
+
   .title {
-    font-size: 1.7rem;
+    font-size: 1.6rem;
+    text-align: center;
   }
+
   .subtitle {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
+
   .coinsBox {
+    font-size: 0.95rem;
+    padding: 10px 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
+    text-align: center;
+  }
+
+  .character {
+    width: 90px;
+    height: 90px;
+  }
+
+  .backButton {
+    width: 90%;
+    font-size: 0.95rem;
+    padding: 10px;
+  }
+
+  .favoriteList {
+    gap: 15px;
+    padding: 5px;
+  }
+
+  .favoriteCard {
+    width: 45%;
+    min-width: 120px;
+    padding: 10px;
+  }
+
+  .favoriteCard img {
+    width: 70px;
+    height: 70px;
+  }
+
+  .favoriteCard p {
+    font-size: 0.85rem;
+  }
+
+  .dashboard p {
     font-size: 1rem;
   }
+}
+
+/* === Планшеты (от 768 до 1024px) === */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .container {
+    padding: 30px 25px;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .coinsBox {
+    font-size: 1.1rem;
+    padding: 12px 20px;
+  }
+
   .favoriteCard {
-    width: 110px;
+    width: 150px;
+  }
+
+  .favoriteCard img {
+    width: 90px;
+    height: 90px;
+  }
+}
+
+/* === Большие экраны (1024px+) === */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .container {
+    padding: 50px 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .favoriteList {
+    gap: 25px;
+  }
+
+  .favoriteCard {
+    width: 160px;
+  }
+}
+
+/* === Очень большие мониторы (Full HD и 4K) === */
+@media (min-width: 1441px) {
+  .container {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 60px 80px;
+  }
+
+  .title {
+    font-size: 2.6rem;
+  }
+
+  .subtitle {
+    font-size: 1.6rem;
+  }
+
+  .favoriteCard {
+    width: 180px;
+  }
+
+  .favoriteCard img {
+    width: 100px;
+    height: 100px;
   }
 }
