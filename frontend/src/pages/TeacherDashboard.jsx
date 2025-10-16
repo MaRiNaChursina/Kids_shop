@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import {rules, autoRules} from "../constants/rules";
+import rules,{ autoRules} from "../constants/rules";
 import LogoutButton from "../components/LogoutButton";
 import styles from "../styles/TeacherDashboard.module.css";
 
